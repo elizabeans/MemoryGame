@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html data-ng-app="MemoryApp">
+	<head>
+		<title>Memory Game</title>
+		<link rel="stylesheet" type="text/css" href="lib/bootstrap-3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="lib/bootstrap-3.3.6/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" type="text/css" href="css/app.css">
+	</head>
+	<body data-ng-controller="MemoryAppController">
+
+		<!-- If the game has not started yet, prompt them to start by selecting a theme and difficulty -->
+		<div ng-if="!currentState.gameStarted">
+			<h1>Welcome to the Memory Game!</h1>
+			<form name="theme-form">
+				<label for="theme"> Choose a Theme </label><br>
+				<select ng-init="themeDropdown = themes[0]" ng-model="themeDropdown" name="theme" ng-options="theme.name for theme in themes">
+				</select>
+			</form>
+
+			<br/>
+
+			<form name="difficultyForm">
+				<label>
+					<input type="radio" ng-model="selectedDifficulty.val" ng-value="difficulty.easy.val">
+						Easy
+				</label>
+				<br/>
+				<label>
+					<input type="radio" ng-model="selectedDifficulty.val" ng-value="difficulty.medium.val">
+						Medium
+				</label>
+				<br/>
+				<label>
+					<input type="radio" ng-model="selectedDifficulty.val" ng-value="difficulty.hard.val">
+						Hard
+				</label>
+				<br/>
+			</form>
+
+			<button class="button btn-success" ng-click="selectDifficulty(selectedDifficulty.val)">Start Game</button>
+		</div>
+
+		<!-- Difficulty and theme have been set, render game and display options to reset or give up -->
+		<div ng-if="currentState.gameStarted">
+			<div>
+				<button class="button btn-primary" ng-click="newGame()">New Game</button>
+				<button class="button btn-primary" ng-click="showAnswers()">Give Up</button>
+				<button class="button btn-primary" ng-click="goToMainMenu()">Main Menu</button>
+			</div>
+
+			<game-grid data="gameGrid" grid-width="gridWidth" grid-height="gridHeight"></game-grid>
+		</div>
+	</body>
+	
+	<!-- 3rd party libs -->
+	<script src="lib/jquery-2.2.2/jquery-2.2.2.min.js"></script>
+	<script src="lib/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+	<script src="lib/angular-1.5.2/angular.min.js"></script>
+	<script src="lib/angular-1.5.2/angular-aria.min.js"></script>
+	<script src="lib/angular-1.5.2/angular-cookies.min.js"></script>
+	<script src="lib/angular-1.5.2/angular-loader.min.js"></script>
+	<script src="lib/angular-1.5.2/angular-message-format.min.js"></script>
+	<script src="lib/angular-1.5.2/angular-messages.min.js"></script>
+	<script src="lib/angular-1.5.2/angular-mocks.js"></script>
+	<script src="lib/angular-1.5.2/angular-resource.min.js"></script>
+	<script src="lib/angular-1.5.2/angular-touch.min.js"></script>
+	
+	<!-- application related files -->
+	<script src="app/app.js"></script>
+	<script src="app/gamegrid.js"></script>
+	<script src="app/config.js"></script>
+	<script src="app/utils.js"></script>
+	<script src="app/themes.js"></script>
+	<script src="app/animals.js"></script>
+</html>
