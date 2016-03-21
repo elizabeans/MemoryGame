@@ -1,13 +1,16 @@
 <div>
 	<h1>The Game Grid</h1>
-	
+	<h3>Turns: {{turns}}</h3>
 	<table>
 		<colgroup span="{{gridWidth}}"></colgroup>
 		<tbody>
 			<tr ng-repeat="rows in gridMatrix track by $index">
+
 				<td ng-repeat="cards in rows track by $index" class="memory-cell">
 					<div class="flip"> 
-				        <div class="card" ng-class="{'flipped' : isFlipped}" ng-click="isFlipped = !isFlipped"> 
+				        <div class="card" ng-class="{'flipped' : gridMatrix[$parent.$index][$index].isFlipped}" 
+				        	ng-click="select(gridMatrix[$parent.$index][$index])"> 
+				            
 				            <div class="face front"> 
 				                <img ng-src="../images/photo.png" class="memory-card">
 				            </div> 
@@ -17,6 +20,7 @@
 				        </div> 
 				    </div> 
 				</td>
+
 			</tr>
 		</tbody>
 	</table>

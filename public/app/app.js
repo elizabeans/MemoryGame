@@ -46,9 +46,11 @@
 				} 
 
 				animalsService.getAnimals(difficulty).forEach(function(element, index, array) {
-					// go through each element in array and push two of them into gameGrid array
+					// create a copy object of element and push into array so we have 2 of each
+					var copyElement = jQuery.extend(true, {}, element);
+
 					$scope.gameGrid.push(element);
-					$scope.gameGrid.push(element);
+					$scope.gameGrid.push(copyElement);
 				});
 				arrayUtils.shuffleArray($scope.gameGrid);
 
