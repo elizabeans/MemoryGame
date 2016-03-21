@@ -43,13 +43,20 @@
 
 			<!-- Difficulty and theme have been set, render game and display options to reset or give up -->
 			<div ng-if="currentState.gameStarted">
-				<div>
-					<button class="button btn-primary" ng-click="newGame()">New Game</button>
-					<button class="button btn-primary" ng-click="showAnswers()">Give Up</button>
-					<button class="button btn-primary" ng-click="goToMainMenu()">Main Menu</button>
+				<div class="buttons-container">
+					<button class="button btn-primary game-button" ng-click="newGame()">New Game</button>
+					<button class="button btn-primary game-button" ng-click="showAnswers()">Give Up</button>
+					<button class="button btn-primary game-button" ng-click="goToMainMenu()">Main Menu</button>
 				</div>
 
-				<game-grid data="gameGrid" grid-width="gridWidth" grid-height="gridHeight"></game-grid>
+				<!-- Inject directive in html and pass it the values it needs from app.js controller -->
+				<game-grid 
+					data="gameGrid" 
+					grid-width="gridWidth" 
+					grid-height="gridHeight" 
+					class="game-container">
+				</game-grid>
+
 			</div>
 
 			<footer id="footer">

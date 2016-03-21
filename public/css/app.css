@@ -1,6 +1,46 @@
+body {
+  height: 100%;
+  width: 100%;
+}
+
+#footer {
+  display: table;
+  margin: 2rem auto;
+}
+
+.buttons-container {
+  display: table;
+  margin: 3rem auto;
+}
+
+.game-button {
+  margin: 0 1rem;
+  width: 10rem;
+  height: 3.3rem;
+}
+
+.game-container {
+  width: 100%;
+}
+
+.game-title-container {
+  display: table;
+  margin: 0 auto;
+}
+
+.game-turns {
+  display: table;
+  margin: 0 auto;
+}
+
+.game-container-inner {
+  display: table;
+  margin: 0 auto;
+}
+
 .memory-card {
-	width: 7.00rem;
-  height: 7.00rem;
+	width: 7rem;
+  height: 7rem;
 }
 
 .memory-cell {

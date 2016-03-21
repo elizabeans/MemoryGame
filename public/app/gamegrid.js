@@ -51,28 +51,37 @@ angular.module('MemoryApp')
 						return;
 					}
 
+					// as long as the above does not apply, we flip the card and show pic
 					card.isFlipped = true;
 
+					// logic for when one card has already been flipped and we are flipping a second card
 					if($scope.prevSelectedCard) {
 					 	if(card.id !== $scope.prevSelectedCard.id) {
+					 		// when both cards did not match
 					 		WAIT = true;
 					 		flip(card);
-					 		// $scope.prevSelectedCard.isFlipped = false;
 					 		flip($scope.prevSelectedCard, 400, function() {
 					 			$scope.prevSelectedCard = null;
 					 		});
 
 					 	} else {
+					 		// when both cards selected matched
 					 		card.isFlipped = true;
 					 		card.isMatched = true;
 					 		$scope.prevSelectedCard.isMatched = true;
 					 		$scope.prevSelectedCard = null;
 					 		++score;
+
+					 		// when all cards are matched, show an alert with a delay so the card flips before showing it
+					 		if(score === MAX_SCORE) {
+					 			$timeout(function() { alert("You win!") }, 300);
+					 		}
 					 	}
 
 					 	++$scope.turns;
 
 					} else {
+						// set a previous selected card so the next time we flip, we have something to compare
 						$scope.prevSelectedCard = card;
 					}
 				};
