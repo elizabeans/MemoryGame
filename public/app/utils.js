@@ -26,3 +26,5 @@ angular.module('utils', [])
 			};
 		}
 	]);
+
+	// factories return one object each

@@ -24,10 +24,11 @@ angular.module('MemoryApp')
 
 				// $scope.data contains animal array
 				var gridMatrix = [];
+
 				for(var i = 0; i < $scope.data.length; ++i) {
 					
 					// add an isFlipped property to entire animal object before inserting into matrix
-					$scope.data[i].isFlipped = false;
+					$scope.data[i].isFlipped = true;
 					$scope.data[i].isMatched = false;
 
 					if(i % $scope.gridWidth === 0) {
@@ -36,7 +37,17 @@ angular.module('MemoryApp')
 
 					gridMatrix[gridMatrix.length-1].push($scope.data[i]);
 				}
+
 				$scope.gridMatrix = gridMatrix;
+
+				// flips all cards to hide after 2 seconds
+				$timeout(function() {
+					for(var i = 0; i < $scope.gridHeight; ++i) {
+						for(var j = 0; j < $scope.gridWidth; ++j) {
+							$scope.gridMatrix[i][j].isFlipped = false;
+						}
+					}
+				}, 2000);
 				
 				var flip = function(card, i, callback) {
 					$timeout(function() {

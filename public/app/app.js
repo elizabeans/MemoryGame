@@ -1,23 +1,24 @@
 (function (angular) {
     "use strict";
 
+    // main module that injects three other modules
+    // modules are containers that hold other things like factories, controllers, constants, services, etc.
 	angular.module('MemoryApp', [
 		'config',
-		'utils',
+		'utils',		/* injecting module dependencies */
 		'themes'
 	])
 	.controller('MemoryAppController', [
 		'$scope',
-		'settings',
+		'settings',        /* declaring dependencies */
 		'arrayUtils',
 		'themeOptions',
 		'themeService',
 		function($scope, settings, arrayUtils, themeOptions, themeService){
-
+			// don't forget to add your dependencies in the function! ^^
 			$scope.gameGrid = [];
 
 			$scope.themes = themeOptions.types;
-			$scope.themeDropdown = "object:4";
 
 			$scope.difficulty = settings.difficulty;
 			$scope.selectedDifficulty = {
@@ -45,7 +46,7 @@
 					$scope.gridHeight = settings.hardHeight;
 				} 
 
-				themeService.getThemeData(theme, difficulty).forEach(function(element, index, array) {
+				themeService.getThemeData(theme, difficulty).forEach(function(element) {
 					// create a copy object of element and push into array so we have 2 of each
 					var copyElement = jQuery.extend(true, {}, element);
 

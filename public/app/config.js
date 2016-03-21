@@ -26,3 +26,5 @@ angular.module('config', [])
 			}
 		}
 	});
+
+// constant is an object that has constant properties

@@ -1,5 +1,5 @@
 angular.module('themes', ['config'])        
-	.constant('themeOptions', {
+	.constant('themeOptions', {  /* where the theme dropdown reads from */
 		types: [
 			{
 				name: "Animals"
@@ -11,7 +11,7 @@ angular.module('themes', ['config'])
 				name: "Sports"
 			}
 		]})
-	.constant('themeData', {
+	.constant('themeData', {  /* theme data where the images are read */
 		animals: [
 			{
 				id: 1,
