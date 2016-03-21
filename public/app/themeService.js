@@ -19,6 +19,9 @@ angular.module('themes')
 					case "Food":
 						filteredArr = themeData.food;
 						break;
+					case "Sports":
+						filteredArr = themeData.sports;
+						break;
 					default:
 						break;
 				}
