@@ -11,8 +11,8 @@
 		'settings',
 		'arrayUtils',
 		'themeOptions',
-		'animalsService',
-		function($scope, settings, arrayUtils, themeOptions, animalsService){
+		'themeService',
+		function($scope, settings, arrayUtils, themeOptions, themeService){
 
 			$scope.gameGrid = [];
 
@@ -28,7 +28,7 @@
 				gameStarted: false
 			};
 
-			$scope.selectDifficulty = function(difficulty) {
+			$scope.startGame = function(difficulty, theme) {
 
 				if(difficulty === "easy") {
 					$scope.gridWidth = settings.easyWidth;
@@ -45,7 +45,7 @@
 					$scope.gridHeight = settings.hardHeight;
 				} 
 
-				animalsService.getAnimals(difficulty).forEach(function(element, index, array) {
+				themeService.getThemeData(theme, difficulty).forEach(function(element, index, array) {
 					// create a copy object of element and push into array so we have 2 of each
 					var copyElement = jQuery.extend(true, {}, element);
 

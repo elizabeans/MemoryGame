@@ -130,6 +130,9 @@ angular.module('themes', ['config'])
 				name: "turtle",
 				src: "../images/animals/turtle.png"
 			}
-
+		],
+		
+		food: [
+			// fill with an array of objects like above (animals)
 		]
 	});

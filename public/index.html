@@ -38,7 +38,7 @@
 					<br/>
 				</form>
 
-				<button class="button btn-success" ng-click="selectDifficulty(selectedDifficulty.val)">Start Game</button>
+				<button class="button btn-success" ng-click="startGame(selectedDifficulty.val, themeDropdown)">Start Game</button>
 			</div>
 
 			<!-- Difficulty and theme have been set, render game and display options to reset or give up -->
@@ -85,5 +85,5 @@
 	<script src="app/config.js"></script>
 	<script src="app/utils.js"></script>
 	<script src="app/themes.js"></script>
-	<script src="app/animals.js"></script>
+	<script src="app/themeService.js"></script>
 </html>
