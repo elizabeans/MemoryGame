@@ -1,19 +1,23 @@
 <div>
 	<h1>The Game Grid</h1>
-	<!-- <div ng-repeat="card in data track by $index">
-		<img ng-src="{{data[$index].src}}" class="memory-card"></img>
-	</div> -->
-
+	
 	<table>
 		<colgroup span="{{gridWidth}}"></colgroup>
-
 		<tbody>
 			<tr ng-repeat="rows in gridMatrix track by $index">
-				<td ng-repeat="cards in rows track by $index">
-
-					<img ng-src="{{cards.src}}" class="memory-card">
+				<td ng-repeat="cards in rows track by $index" class="memory-cell">
+					<div class="flip"> 
+				        <div class="card" ng-class="{'flipped' : isFlipped}" ng-click="isFlipped = !isFlipped"> 
+				            <div class="face front"> 
+				                <img ng-src="../images/photo.png" class="memory-card">
+				            </div> 
+				            <div class="face back"> 
+				                <img ng-src="{{cards.src}}" class="memory-card">
+				            </div> 
+				        </div> 
+				    </div> 
 				</td>
 			</tr>
 		</tbody>
-	</table>	
+	</table>
 </div>

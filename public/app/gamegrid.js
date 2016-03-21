@@ -25,7 +25,10 @@ angular.module('MemoryApp')
 				}
 				$scope.gridMatrix = gridMatrix;
 
-				console.log(gridMatrix);
+				$scope.select = function(card) {
+
+				};
+
 			}
 		}
 	});
